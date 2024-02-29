@@ -1,10 +1,27 @@
-import random
+import keyword
+import string
 
-my_list = []
+print(keyword.kwlist)
+string_punctuation = string.punctuation + ' '
 
-for _ in range(random.randint(3, 10)):
-    my_list.append(random.randint(0, 5))
-print(my_list)
+my_value = input('Enter name of value: ')
+contains_letter = False
 
-new_other_list = [my_list[0], my_list[2], my_list[-2]]
-print(new_other_list)
+
+if my_value in keyword.kwlist:
+    contains_letter = False
+else:
+    for i in my_value:
+        if i in string.ascii_lowercase:
+            contains_letter = True
+        if i in string.ascii_uppercase or my_value[0].isdigit() or i in string_punctuation and i != '_':
+            contains_letter = False
+            break
+
+if contains_letter:
+    print(True)
+else:
+    print(False)
+
+
+
